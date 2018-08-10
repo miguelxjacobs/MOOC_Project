@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="scroll-behavior:smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MOOC Learning Styles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            transition: .1s;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /* Navbar Only */
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            text-align: center;
+            z-index: 1;
+        }
+        nav ul {
+            height: 50px;
+            background-color: rgba(0,0,0,0.9);
+            word-spacing: 3em;
+        }
+        nav ul li {
+            display: inline;
+            letter-spacing: 5px;
+            font-size: 1em;
+            line-height: 2.8;
+        }
+        nav ul li:hover {
+            text-shadow: 0 0 20px white;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: whitesmoke;
+            font-weight: thin;
+        }
+
+        /* Landing page */
+        .intro {
+            height: 100vh;
+            /* position: absolute;
+            top: 0; */
+            padding: 30px;
+            background-image: url(bg.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: blurrify 8s linear infinite;
+        }            
+        @keyframes blurrify {
+            0% {
+                filter: none;
+                -webkit-filter: none;
+            }
+            50% {
+                filter: grayscale(80%) blur(1px);
+                -webkit-filter: grayscale(80%) blur(1px);
+            }
+            100% {
+                filter: none;
+                -webkit-filter: none;
+            }
+        }
+        .heading {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto;
+            height: 200px;
+            position: absolute;
+            top: 150px;
+            filter: none !important;
+        }
+        .heading h3 {
+            grid-column: 4/6;
+            font-size: 1.5em;
+            letter-spacing: 3px;
+        }
+        .heading p {
+            grid-column: 4/6;
+            font-size: 1.1em;
+            letter-spacing: 4px;
+        }
+
+        /* Techniques */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 15% 70% 15%;
+            grid-template-rows: 30vh 70vh;
+            height: 100vh;
+            padding: 50px 20px 10px 20px;
+        }
+        .wrapper article {
+            grid-column: 2/3;
+            grid-row: 1/2;
+        }
+        .wrapper article h3 {
+            padding-bottom: 20px;
+            color: #555;
+            letter-spacing: 2.5px;
+        }
+        .wrapper article p {
+            font-size: .8em;
+            padding: 5px 0;
+            letter-spacing: 1px;
+            color: #777;
+        }
+        .wrapper .image {
+            grid-column: 2/3;
+            grid-row: 2/3;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            margin: auto;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.8);
+        }
+
+        /* Back to top Button */
+        #toTop {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(0,0,0,0.5);
+            border-radius: 25px;
+            background-color: rgba(255,255,255,0.2);
+            position: fixed;
+            right: 20px;
+            bottom: 50px;
+            z-index: 1;
+            text-decoration: none;
+            filter: blur(.5px);
+        }
+        #toTop:hover {
+            cursor: pointer;
+        }
+        #toTop p {
+            text-align: center;
+            font-size: 40px;
+            color: rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        footer {
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+            border-top: 1px solid rgba(0,0,0,0.5);
+            box-shadow: 1px 1px 40px rgba(0,0,0,0.5);
+        }
+        footer center {
+            letter-spacing: 10px;
+            color: rgba(0,0,0,0.5);
+        }
+
+        /* ***************** Media Queries ***************** */
+        /* Tab View */
+        @media only screen and (max-width: 768px) {
+            nav ul li a {
+                font-size: .8em;
+            }
+            .wrapper {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 300px;
+            }
+            .wrapper article {
+                grid-column: 2/3;
+                grid-row: 1/2;
+            }
+            .wrapper .image {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                width: 90%;
+                height: 80%;
+                margin: 5px auto auto;
+            }
+            .procrastination {
+                height: 450px;
+            }
+            .focused {
+                height: 320px;
+            }
+            .pomodora {
+                height: 300px;
+            }            
+        }
+
+        /* Mobile View */
+        @media only screen and (max-width: 426px) {
+            nav ul {
+                height: 140px;
+            }
+            nav ul li {
+                display: inline-block;
+                width: 100%;
+            }
+            .heading {
+                grid-template-columns: 1fr;
+                padding-left: 20px;
+            }
+            .heading h3 {
+                font-size: .9em;
+                padding-top: 100px;
+            }
+            .heading p {
+                font-size: .8em;
+                padding-right: 100px;
+            }
+            .wrapper {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .wrapper article {
+                grid-column: 1/2;
+                grid-row: 2/3;
+            }
+            .wrapper .image {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                width: 100%;
+                height: 90%;
+            }
+            .procrastination {
+                height: 600px;
+            }
+            .focused {
+                height: 490px;
+            }
+            .pomodora {
+                height: 500px;
+            }   
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#procrastination">Procrastination</a></li>
+            <li><a href="#focused">Focused-Learning</a></li>
+            <li><a href="#pomodora">Pomodora</a></li>
+        </ul>
+    </nav>
+
+    <!-- Introduction -->
+    <section id="intro" class="intro">
+        
+    </section>
+    
+    <div class="heading">
+        <h3>LEARNING STYLES - MOOC</h3>
+        <p>
+            A read on 3 learning styles that I've come to value
+        </p>
+    </div>
+
+    <!-- Procrastination -->
+    <section id="procrastination" class="wrapper procrastination">
+        <article>
+            <h3>Procrastination</h3>
+            <p>
+                Let's start with my favourite... The most misinterpreted method of them all.
+            </p>
+            <p>                
+                In essence, procrastination involves performing an alternative task as opposed to the one that one is supposed to be performed, often a replacement for a tedious task.
+            </p>
+            <p>                
+                How one can use this technique effectively is by doing alternative simple tasks that allows one to take a break from the more simpler task and use the heavier task as a break. You may be thinking thinking that it makes no sense right?
+            </p>
+            <p>
+                However, it makes perfect sense when considering the fact that the heavier task is broken up into smaller tasks that is completed piece by piece resulting in a fully completed task later on.
+            </p>
+            <p>                
+                It is imperative to note that procrastination is a risky method and relies solely on determination and perseverance (as ironic as it may seem) and someone with a weak sense of determination should try to avoid using this method to either learn or complete a task.
+            </p>
+        </article>
+        <div class="image">
+            <img src="procrastinate.jpg" width="100%" height="100%" draggable="false">
+        </div>
+    </section>
+
+    <!-- Focuses Learning -->
+    <section id="focused" class="wrapper focused">
+        <article>
+            <h3>Focused Learning</h3>
+            <p>
+                Pretty straightforward really, this method is exactly as it sounds.
+            </p>
+            <p>                
+                One focuses on something to the extent that all distractions cease to exist. The science behind it is that the prefrontal cortex goes into a state of hyperdrive allowing one to block out any and all extraneous information.
+            </p>
+            <p>
+                When we switch to focused mode a task becomes easier because we simply apply more brain power, attention and effort to that one specific task. However, switching to this mode is not easy to achieve since one has to block out any and all distractions.
+            </p>
+            <p>
+                Good luck on your endeavours!
+            </p>
+        </article>
+        <div class="image">
+            <img src="focused.jpg" width="100%" height="100%" draggable="false">
+        </div>
+    </section>
+
+    <!-- Pomodora -->
+    <section id="pomodora" class="wrapper pomodora">
+        <article>
+            <h3>Pomodora</h3>
+            <p>
+                Ah finally, in conclusion, what I believe to be the most effective technique...
+            </p>
+            <p>
+                Very similar to procrastination yet very different altogether. Allow me to clarify. The pomodora technique allocates a set amount of time for a task/study and rewards one with a break interval that increases the breaks time in accordance to what you feel is a deserving time frame.
+            </p>
+            <p>
+                You actually have to do work and take breaks in between, if you break the cycle you have to restart the methods time frame therefore it's best to do it when you're isolated from distractions
+            </p>
+        </article>
+        <div class="image">
+            <img src="pomodora.jpg" width="100%" height="100%" draggable="false">
+        </div>
+    </section>
+
+    <a id="toTop" href="#intro">
+        <p>&UpArrow;</p>
+    </a>
+
+    <footer>
+        <center>MIGUEL JACOBS</center>
+    </footer>
+
+    <script>
+        // -------- ToTop button ----------
+        //target html document
+        window.onscroll = function() {
+            toTop()
+        };
+
+        //hidden button until user scrolls to pomodora section
+        function toTop() {
+            if(document.body.scrollTop >= 880 || document.documentElement.scrollTop >= 880) {
+                document.getElementById('toTop').style.display = "block";
+            }
+            else {
+                document.getElementById('toTop').style.display = "none";
+            }    
+        } 
+    </script>
+</body>
+</html>
